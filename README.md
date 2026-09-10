@@ -56,7 +56,7 @@ FROM user_activities
 GROUP BY first_month, month_number
 ORDER BY first_month, month_number;
 
-
+```
 ### 2. RFM 分群計算
 ```sql
 WITH rfm_raw AS (
@@ -87,3 +87,4 @@ SELECT
     r_score, f_score, m_score,
     (r_score + f_score + m_score) AS rfm_total_score
 FROM rfm_scores;
+```
