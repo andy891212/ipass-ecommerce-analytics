@@ -4,10 +4,13 @@
 本專案針對 2023–2025 年全球電商交易數據（涵蓋 2,000 筆訂單、1,534 位顧客）進行數據分析。專案結合 **MySQL 數據倉儲與建模**、**Python 數據 Quality Check** 與 **Tableau 視覺化儀表板**，旨在解決核心商業痛點：追蹤 Cohort 顧客流失趨勢，以及建立動態 RFM 顧客價值分群模型，提供行銷與營運策略。
 
 ---
+這份專案是在幫這家電商找兩個答案：第一，客人買完一次之後，為什麼都不回來了？
+                               第二，到底哪些人才是真正幫我們賺錢的 VIP？
 
 ## 🖼️ 視覺化儀表板 (Tableau Dashboard)
 
 <img width="1920" height="1080" alt="dashboard_preview" src="https://github.com/user-attachments/assets/b7db2268-e048-4829-9427-3617574cc34d" />
+
 
 
 ---
