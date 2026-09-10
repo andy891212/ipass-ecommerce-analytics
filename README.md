@@ -57,7 +57,7 @@ GROUP BY first_month, month_number
 ORDER BY first_month, month_number;
 
 ```
-### 2. RFM 分群計算
+### 2. RFM 分群計算(MySQL Window Functions)
 ```sql
 WITH rfm_raw AS (
     SELECT 
