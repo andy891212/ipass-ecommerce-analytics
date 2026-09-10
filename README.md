@@ -7,7 +7,8 @@
 
 ## 🖼️ 視覺化儀表板 (Tableau Dashboard)
 
-![Tableau Dashboard](Dashboard/dashboard_preview.png)
+<img width="1920" height="1080" alt="dashboard_preview" src="https://github.com/user-attachments/assets/b7db2268-e048-4829-9427-3617574cc34d" />
+
 
 ---
 
