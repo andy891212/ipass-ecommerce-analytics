@@ -1,6 +1,6 @@
-# 全球電商顧客留存與 RFM 數據分群分析 (Global E-Commerce Analytics)
+# 全球電商顧客留存與 RFM 數據分群分析
 
-## 📌 專案摘要 (Executive Summary)
+## 📌 專案摘要
 本專案針對 2023–2025 年全球電商交易數據（涵蓋 2,000 筆訂單、1,534 位顧客）進行數據分析。專案結合 **MySQL 數據倉儲與建模**、**Python 數據 Quality Check** 與 **Tableau 互動式視覺化儀表板**，旨在解決核心商業痛點：追蹤 Cohort 顧客流失趨勢，以及建立動態 RFM 顧客價值分群模型，提供可落地的行銷與營運策略。
 
 ---
@@ -53,3 +53,35 @@ SELECT
 FROM user_activities
 GROUP BY first_month, month_number
 ORDER BY first_month, month_number;
+
+
+### 2. RFM 分群計算 (MySQL Window Functions)
+```sql
+WITH rfm_raw AS (
+    SELECT 
+        Customer_Name,
+        DATEDIFF('2026-01-01', MAX(STR_TO_DATE(Order_Date, '%Y-%m-%d'))) AS recency,
+        COUNT(DISTINCT Order_ID) AS frequency,
+        SUM(Total_Sales) AS monetary
+    FROM ecommerce.global_ecommerce_sales
+    GROUP BY Customer_Name
+),
+rfm_scores AS (
+    SELECT 
+        Customer_Name,
+        recency,
+        frequency,
+        monetary,
+        NTILE(5) OVER (ORDER BY recency ASC) AS r_score,
+        NTILE(5) OVER (ORDER BY frequency ASC) AS f_score,
+        NTILE(5) OVER (ORDER BY monetary ASC) AS m_score
+    FROM rfm_raw
+)
+SELECT 
+    Customer_Name,
+    recency,
+    frequency,
+    ROUND(monetary, 2) AS monetary,
+    r_score, f_score, m_score,
+    (r_score + f_score + m_score) AS rfm_total_score
+FROM rfm_scores;
