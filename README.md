@@ -12,7 +12,7 @@
 
 ---
 
-## 🛠️ 技術架構與資料驗收 (Tech Stack & Data Validation)
+## 🛠️ 技術架構與資料驗收
 * **工具鏈**：MySQL 8.0 (數據倉儲/分析) + Python (Data Validation) + Tableau Public (BI 視覺化)
 * **UAT 資料品質查驗**：
   * **完整性**：2,000 筆訂單欄位無缺漏（Null Count = 0）。
@@ -24,8 +24,7 @@
 
 ---
 
-## 💻 核心 SQL 實作與語法 (SQL Implementation)
-
+## 💻 核心 SQL 實作與語法
 ### 1. Cohort 留存計算 (MySQL)
 ```sql
 WITH user_first_order AS (
@@ -55,7 +54,7 @@ GROUP BY first_month, month_number
 ORDER BY first_month, month_number;
 
 
-### 2. RFM 分群計算 (MySQL Window Functions)
+### 2. RFM 分群計算
 ```sql
 WITH rfm_raw AS (
     SELECT 
